@@ -1,3 +1,5 @@
+	* libfuse: add missing INIT flags
+
 FUSE 2.9.9 (2019-01-04)
 =======================
 
@@ -32,8 +34,6 @@ FUSE 2.9.7 (2016-06-20)
   a FUSE file system.
 
 FUSE 2.9.6 (2016-04-23)
-=======================
-
 * Tarball now includes documentation.
 * Shared-object version has now been bumped correctly.
 
