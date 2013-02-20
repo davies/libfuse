@@ -1,3 +1,5 @@
+	* libfuse: change the type of fuse_ino_t from 'unsigned long' to
+	'uint64_t'
 	* libfuse: add readdirplus support in fuse_lowlevel_ops.  Patch by Shuo Feng
 	* libfuse: add missing INIT flags
 
