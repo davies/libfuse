@@ -1,3 +1,6 @@
+	* libfuse: Add "async_dio" and "writeback_cache" options.
+	Asynchronous direct I/O is supported by linux kernels 3.13 and
+	later, writeback caching is supported by 3.14 and later.
 	* libfuse: change the type of fuse_ino_t from 'unsigned long' to
 	'uint64_t'
 	* libfuse: add readdirplus support in fuse_lowlevel_ops.  Patch by Shuo Feng
