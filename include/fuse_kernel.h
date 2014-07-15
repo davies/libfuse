@@ -98,6 +98,8 @@
  *  - add FUSE_WRITEBACK_CACHE
  *  - add time_gran to fuse_init_out
  *  - add reserved space to fuse_init_out
+ *  - add FATTR_CTIME
+ *  - add ctime and ctimensec to fuse_setattr_in
  */
 
 #ifndef _LINUX_FUSE_H
@@ -198,6 +200,7 @@ struct fuse_file_lock {
 #define FATTR_ATIME_NOW	(1 << 7)
 #define FATTR_MTIME_NOW	(1 << 8)
 #define FATTR_LOCKOWNER	(1 << 9)
+#define FATTR_CTIME	(1 << 10)
 
 /**
  * Flags returned by the OPEN request
@@ -438,22 +441,22 @@ struct fuse_link_in {
 };
 
 struct fuse_setattr_in {
-	__u32	valid;
-	__u32	padding;
-	__u64	fh;
-	__u64	size;
-	__u64	lock_owner;
-	__u64	atime;
-	__u64	mtime;
-	__u64	unused2;
-	__u32	atimensec;
-	__u32	mtimensec;
-	__u32	unused3;
-	__u32	mode;
-	__u32	unused4;
-	__u32	uid;
-	__u32	gid;
-	__u32	unused5;
+	uint32_t	valid;
+	uint32_t	padding;
+	uint64_t	fh;
+	uint64_t	size;
+	uint64_t	lock_owner;
+	uint64_t	atime;
+	uint64_t	mtime;
+	uint64_t	ctime;
+	uint32_t	atimensec;
+	uint32_t	mtimensec;
+	uint32_t	ctimensec;
+	uint32_t	mode;
+	uint32_t	unused4;
+	uint32_t	uid;
+	uint32_t	gid;
+	uint32_t	unused5;
 };
 
 struct fuse_open_in {
