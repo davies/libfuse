@@ -96,6 +96,8 @@
  *
  * 7.23
  *  - add FUSE_WRITEBACK_CACHE
+ *  - add time_gran to fuse_init_out
+ *  - add reserved space to fuse_init_out
  */
 
 #ifndef _LINUX_FUSE_H
@@ -136,7 +138,7 @@
 #define FUSE_KERNEL_VERSION 7
 
 /** Minor version number of this interface */
-#define FUSE_KERNEL_MINOR_VERSION 22
+#define FUSE_KERNEL_MINOR_VERSION 23
 
 /** The node ID of the root inode */
 #define FUSE_ROOT_ID 1
@@ -564,14 +566,19 @@ struct fuse_init_in {
 	__u32	flags;
 };
 
+#define FUSE_COMPAT_INIT_OUT_SIZE 8
+#define FUSE_COMPAT_22_INIT_OUT_SIZE 24
+
 struct fuse_init_out {
-	__u32	major;
-	__u32	minor;
-	__u32	max_readahead;
-	__u32	flags;
-	__u16   max_background;
-	__u16   congestion_threshold;
-	__u32	max_write;
+	uint32_t	major;
+	uint32_t	minor;
+	uint32_t	max_readahead;
+	uint32_t	flags;
+	uint16_t	max_background;
+	uint16_t	congestion_threshold;
+	uint32_t	max_write;
+	uint32_t	time_gran;
+	uint32_t	unused[9];
 };
 
 #define CUSE_INIT_INFO_MAX 4096

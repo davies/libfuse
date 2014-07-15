@@ -1,3 +1,6 @@
+	* libfuse: add "time_gran" option.  This allows the filesystem to
+	specify the time granularity it supports when the kernel is
+	responsible for updating times ("writeback_cache" option).
 	* libfuse: Add "async_dio" and "writeback_cache" options.
 	Asynchronous direct I/O is supported by linux kernels 3.13 and
 	later, writeback caching is supported by 3.14 and later.
