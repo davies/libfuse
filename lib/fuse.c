@@ -236,7 +236,8 @@ static int fuse_register_module(const char *name,
 
 static int fuse_load_so_module(const char *module)
 {
-	int ret = -1;
+	return -1;
+/*	int ret = -1;
 	char *tmp;
 	struct fusemod_so *so;
 	fuse_module_factory_t factory;
@@ -280,6 +281,7 @@ out_dlclose:
 out_free_so:
 	free(so);
 	goto out;
+*/
 }
 
 static struct fuse_module *fuse_find_module(const char *module)
