@@ -227,8 +227,8 @@ static struct fuse_module *fuse_modules;
 
 static int fuse_load_so_name(const char *soname)
 {
+/*
 	struct fusemod_so *so;
-
 	so = calloc(1, sizeof(struct fusemod_so));
 	if (!so) {
 		fprintf(stderr, "fuse: memory allocation failed\n");
@@ -253,12 +253,14 @@ err:
 	if (so->handle)
 		dlclose(so->handle);
 	free(so);
+*/
 	return -1;
 }
 
 static int fuse_load_so_module(const char *module)
 {
-	int res;
+	return -1;
+/*	int res;
 	char *soname = malloc(strlen(module) + 64);
 	if (!soname) {
 		fprintf(stderr, "fuse: memory allocation failed\n");
@@ -268,6 +270,7 @@ static int fuse_load_so_module(const char *module)
 	res = fuse_load_so_name(soname);
 	free(soname);
 	return res;
+*/
 }
 
 static struct fuse_module *fuse_find_module(const char *module)
@@ -314,7 +317,7 @@ static void fuse_put_module(struct fuse_module *m)
 				else
 					mp = &(*mp)->next;
 			}
-			dlclose(so->handle);
+			// dlclose(so->handle);
 			free(so);
 		}
 	}
