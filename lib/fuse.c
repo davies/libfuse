@@ -227,7 +227,7 @@ static struct fuse_module *fuse_modules;
 
 static int fuse_load_so_name(const char *soname)
 {
-	struct fusemod_so *so;
+/*	struct fusemod_so *so;
 
 	so = calloc(1, sizeof(struct fusemod_so));
 	if (!so) {
@@ -253,7 +253,7 @@ err:
 	if (so->handle)
 		dlclose(so->handle);
 	free(so);
-	return -1;
+*/	return -1;
 }
 
 static int fuse_load_so_module(const char *module)
@@ -299,7 +299,7 @@ static struct fuse_module *fuse_get_module(const char *module)
 
 static void fuse_put_module(struct fuse_module *m)
 {
-	pthread_mutex_lock(&fuse_context_lock);
+/*	pthread_mutex_lock(&fuse_context_lock);
 	assert(m->ctr > 0);
 	m->ctr--;
 	if (!m->ctr && m->so) {
@@ -319,6 +319,7 @@ static void fuse_put_module(struct fuse_module *m)
 		}
 	}
 	pthread_mutex_unlock(&fuse_context_lock);
+*/
 }
 
 static void init_list_head(struct list_head *list)
