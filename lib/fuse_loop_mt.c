@@ -208,7 +208,7 @@ static int fuse_loop_start_thread(struct fuse_mt *mt)
 
 static void fuse_join_worker(struct fuse_mt *mt, struct fuse_worker *w)
 {
-	pthread_join(w->thread_id, NULL);
+	// pthread_tryjoin_np(w->thread_id, NULL);
 	pthread_mutex_lock(&mt->lock);
 	list_del_worker(w);
 	pthread_mutex_unlock(&mt->lock);
@@ -247,6 +247,8 @@ int fuse_session_loop_mt(struct fuse_session *se)
 		mt.exit = 1;
 		pthread_mutex_unlock(&mt.lock);
 
+		// wait for worker threads to terminate
+		usleep(100*1000);
 		while (mt.main.next != &mt.main)
 			fuse_join_worker(&mt, mt.main.next);
 
